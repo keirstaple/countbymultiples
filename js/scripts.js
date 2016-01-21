@@ -31,9 +31,14 @@ $(document).ready(function() {
   $("form#count").submit(function(event) {
      var countUpTo = parseInt($("input#UpTo").val());
 		 var countUpBy = parseInt($("input#UpBy").val());
-		 var result = indexOutput(countUpTo, countUpBy);
 
-		 $(".listofresults").append("<li>" + result + "</li>");
+		 var result = indexOutput(countUpTo, countUpBy);
+		 	result.forEach(function(number) {
+				$(".listofresults").append("<li>" + number + "</li>");
+			});
+
+
+
      $("#result").show();
 
     event.preventDefault();
