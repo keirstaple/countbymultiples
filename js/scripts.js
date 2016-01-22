@@ -5,21 +5,22 @@ var countUpTo =function(number) {
 };
 
 var wrongInput = function(countUpTo, countUpBy) {
-  if (countUpTo < countUpBy) {
-	return "Invalid Input";
-} else if (countUpBy <= 0 || countUpTo <= 0) {
-	return "Numbers need to be positive";
-} else if (countUpBy <= countUpTo) {
-	return indexOutput(countUpTo, countUpBy);
-} else {
-	return "You screwed up";
+  if (countUpBy <= 0 || countUpTo <= 0) {
+		if(alert('Numbers need to be positive!')){}
+		else window.location.reload();
+	} else if (countUpTo < countUpBy) {
+		if(alert('Invalid Entry!')){}
+		else window.location.reload();
+	} else if (countUpBy <= countUpTo) {
+		return indexOutput(countUpTo, countUpBy);
+	} else {
+		return "You screwed up";
 	}
 };
 
 var indexOutput = function(countUpTo, countUpBy) {
 	var multiples = [];
 	for (var i = countUpBy; i <= countUpTo; i += countUpBy) {
-
 	  if (i % 5 === 0 && i % 3 === 0) {
 			multiples.push('divisble-by-both');
 		} else if (i % 5 === 0){
@@ -38,7 +39,6 @@ var indexOutput = function(countUpTo, countUpBy) {
 
 $(document).ready(function() {
   $("form#count").submit(function(event) {
-		debugger;
      var countUpTo = parseInt($("input#UpTo").val());
 		 var countUpBy = parseInt($("input#UpBy").val());
 
@@ -49,9 +49,8 @@ $(document).ready(function() {
 				$(".listofresults").append("<li>" + number + "</li>");
 			});
 
-			// $(".invalid").text(invalid);
-			$("#result").show();
 
+			$("#result").show();
     event.preventDefault();
   });
 });
